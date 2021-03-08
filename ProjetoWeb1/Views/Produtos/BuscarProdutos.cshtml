@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ProjetoWeb1.Models.Produtos>
+
+@{
+    ViewBag.Title = "Buscar Produtos";
+}
+
+<h2>Listar Produtos</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo Produto", "CadastroProdutos", "Produtos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "AtualizarProdutos", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteProdutos", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
